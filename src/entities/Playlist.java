@@ -24,6 +24,7 @@ public class Playlist {
         musicas.add(midias);
 
     }
+
     public void removerMusica(int index) {
         if (index >= 0 && index < musicas.size()) {
             musicas.remove(index);

@@ -64,13 +64,14 @@ public class Main {
                 System.out.println("4. Ver minha Playlist");
                 System.out.println("5. Tempo total da minha Playlist");
                 System.out.println("6. Ver meus dados");
-                System.out.println("7. Sair");
+                System.out.println("7. Buscar músicas por artista");
+                System.out.println("8. Sair");
                 System.out.print("Escolha uma opção: ");
 
                 opcao = input.nextInt();
                 input.nextLine(); // limpar o buffer
 
-                while (opcao < 1 || opcao > 7) { // validação da opção
+                while (opcao < 1 || opcao > 8) { // validação da opção
                     System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 4:");
                     opcao = input.nextInt();
                     input.nextLine();
@@ -100,7 +101,11 @@ public class Main {
                         ExibirDados.mostrar(usuario, playlist);  // chama o método para exibir os dados do usuário
                         break;
 
-                    case 7: // Saindo do sistema
+                    case 7: // buscar musicas por nome do artista
+                        BuscarPorAutor.Buscar();
+                        break;
+
+                    case 8: // Saindo do sistema
                         SaindoDoSistema.saindo();
                         break;
 
@@ -109,9 +114,7 @@ public class Main {
                 }
             }
         } catch (Exception e) { // captura qualquer erro inesperado
-
             System.out.println("Ocorreu um erro: " + e.getMessage());
-
         } finally { // bloco que sempre será executado
             System.out.println("Até logo !"); // mudar frase possivelmente
         }

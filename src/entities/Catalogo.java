@@ -57,15 +57,41 @@ public class Catalogo {
 
 
     // Métodos para acessar as playlists
-    public Playlist getSertanejo() { return sertanejo; }
-    public Playlist getRock() { return rock; }
-    public Playlist getForro() { return forro; }
-    public Playlist getJazz() { return jazz; }
-    public Playlist getHipHop() { return hiphop; }
-    public Playlist getPop() { return pop; }
-    public Playlist getClassica() { return classica; }
-    public Playlist getEletronica() { return eletronica; }
-    public Playlist getMpb() { return mpb; }
+    public Playlist getSertanejo() {
+        return sertanejo;
+    }
+
+    public Playlist getRock() {
+        return rock;
+    }
+
+    public Playlist getForro() {
+        return forro;
+    }
+
+    public Playlist getJazz() {
+        return jazz;
+    }
+
+    public Playlist getHipHop() {
+        return hiphop;
+    }
+
+    public Playlist getPop() {
+        return pop;
+    }
+
+    public Playlist getClassica() {
+        return classica;
+    }
+
+    public Playlist getEletronica() {
+        return eletronica;
+    }
+
+    public Playlist getMpb() {
+        return mpb;
+    }
 
     // listatr musicas
 
@@ -84,6 +110,6 @@ public class Catalogo {
             catalogo.getSertanejo().exibirPlaylist();
             catalogo.getForro().exibirPlaylist();
         }
-
     }
+
 }
