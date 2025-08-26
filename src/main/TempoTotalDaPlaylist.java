@@ -12,8 +12,8 @@ class TempoTotalDaPlaylist {
             int minutos = (int) tempoTotal;
             int segundos = (int) ((tempoTotal - minutos) * 60);
             System.out.println("Tempo total da playlist '" + playlist.getnomePlaylist() + "' é de :  " + minutos + " minutos e " + segundos + " segundos.");
-        } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao calcular o tempo total da playlist: " + e.getMessage());
+        } catch (Exception SemMusicaNaPlaylist){
+            System.out.println();
         }
     }
 }

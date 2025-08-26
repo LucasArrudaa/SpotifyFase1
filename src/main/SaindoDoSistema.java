@@ -6,7 +6,7 @@ class SaindoDoSistema {
             System.out.println("Obrigado por usar o nosso programa. ");
             System.out.println("-------------------------");
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao adicionar músicas: " + e.getMessage());
+            System.out.println("Ocorreu um erro ao sair do sistema: " + e.getMessage());
         }
     }
 }

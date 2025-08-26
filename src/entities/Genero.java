@@ -62,6 +62,6 @@ public enum Genero {
                 return g;
             }
         }
-        throw new IllegalArgumentException("Gênero não encontrado: " + texto);
+        throw new IllegalArgumentException("Gênero não encontrado: " + new IllegalArgumentException());
     }
 }

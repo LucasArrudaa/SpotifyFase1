@@ -66,8 +66,8 @@ class ListarTodasAsMusicas {
                     default -> System.out.println("Opção inválida. Por favor, escolha um número entre 1 e 9.");
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao adicionar músicas: " + e.getMessage());
+        } catch (Exception InputMismatchException) {
+            System.out.println("Ocorreu um erro ao listar  músicas: " );
         }
     }
 }

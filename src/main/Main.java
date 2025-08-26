@@ -1,5 +1,6 @@
 package main;
 import entities.*; // importando todas as classes do pacote entities
+import exceptions.OpcaoInvalida;
 
 import java.util.Scanner;
 
@@ -48,14 +49,13 @@ public class Main {
             System.out.println("'" + playlist.getnomePlaylist() + "' criada com sucesso!");
 
             // feito o cadastro e criado o objeto usuario
-            Usuario usuario = new Usuario(nome, email, password,nomePlaylist);
+            Usuario usuario = new Usuario(nome, email, password, nomePlaylist);
             System.out.println("Cadastro realizado com sucesso!");
             System.out.println("-------------------------");
             System.out.println("Bem-vindo, " + usuario.getNome() + "!");
             System.out.println("-------------------------");
             //  LOOP DO MENU COM WHILE
             int opcao = 0;
-
             while (opcao != 7) {
                 System.out.println("\nMenu do Spotify:");
                 System.out.println("1. Listar musicas disponíveis");
@@ -68,52 +68,58 @@ public class Main {
                 System.out.print("Escolha uma opção: ");
 
                 opcao = input.nextInt();
-                input.nextLine(); // limpar o buffer
+                {
+                    input.nextLine(); // limpar o buffer
+                    while (opcao < 1 || opcao > 7) { // validação da opção
+                        System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 4:");
+                        opcao = input.nextInt();
+                        input.nextLine();
+                    }
+                    switch (opcao) {
+                        case 1:  // Listar Todas as músicas
+                            ListarTodasAsMusicas.listar();
+                            break;
 
-                while (opcao < 1 || opcao > 7) { // validação da opção
-                    System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 4:");
-                    opcao = input.nextInt();
-                    input.nextLine();
+                        case 2: // Adicionar Musicas
+                            AdicionarMusicas.adicionar(playlist, new Catalogo()); // chama o método para adicionar músicas à playlist
+                            break;
+
+                        case 3: // Remover Musicas
+                            RemoverMusica.remover(playlist); // chama o método para remover músicas da playlist
+                            break;
+
+                        case 4: // Ver Minha Nome da playlist
+                            VerMinhaPlaylist.verMinhaPlaylist(playlist); // chama o método para ver a playlist
+                            break;
+
+                        case 5: // Tempo Total da Nome Da Playlist
+                            TempoTotalDaPlaylist.tempoTotalDaPlaylist(playlist); // chama o método para ver o tempo total da playlist
+                            break;
+
+                        case 6: // Exibir Dados do Usuário
+                            ExibirDados.mostrar(usuario, playlist);  // chama o método para exibir os dados do usuário
+                            break;
+
+                        case 7: // Saindo do sistema
+                            SaindoDoSistema.saindo();
+                            break;
+
+                        default: // caso a opção seja inválida
+                            System.out.println("Opção inválida. Por favor, tente novamente.");
+                    }
                 }
-                switch (opcao) {
-                    case 1:  // Listar Todas as músicas
-                        ListarTodasAsMusicas.listar();
-                        break;
 
-                    case 2: // Adicionar Musicas
-                        AdicionarMusicas.adicionar(playlist, new Catalogo()); // chama o método para adicionar músicas à playlist
-                        break;
 
-                    case 3: // Remover Musicas
-                        RemoverMusica.remover(playlist); // chama o método para remover músicas da playlist
-                        break;
-
-                    case 4: // Ver Minha Nome da playlist
-                        VerMinhaPlaylist.verMinhaPlaylist(playlist); // chama o método para ver a playlist
-                        break;
-
-                    case 5: // Tempo Total da Nome Da Playlist
-                        TempoTotalDaPlaylist.tempoTotalDaPlaylist(playlist); // chama o método para ver o tempo total da playlist
-                        break;
-
-                    case 6: // Exibir Dados do Usuário
-                        ExibirDados.mostrar(usuario, playlist);  // chama o método para exibir os dados do usuário
-                        break;
-
-                    case 7: // Saindo do sistema
-                        SaindoDoSistema.saindo();
-                        break;
-
-                    default: // caso a opção seja inválida
-                        System.out.println("Opção inválida. Por favor, tente novamente.");
-                }
             }
-        } catch (Exception e) { // captura qualquer erro inesperado
+            throw new OpcaoInvalida("ERRO: DIGITE APENAS NUMERO INTEIRO !! ");
+        }catch (OpcaoInvalida e){
+            System.out.println(e.getMessage());
+        throw new IllegalArgumentException("ERRO: DIGITE UMA OPÇÃO VÁLIDA!!");
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
 
-            System.out.println("Ocorreu um erro: " + e.getMessage());
-
-        } finally { // bloco que sempre será executado
-            System.out.println("Até logo !"); // mudar frase possivelmente
         }
+
+
     }
 }
