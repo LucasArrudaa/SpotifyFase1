@@ -2,21 +2,23 @@ package main;
 import entities.*; // importando todas as classes do pacote entities
 import exceptions.OpcaoInvalida;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         try {
             // Inicio do sistema e cadastro do usuário
-            Scanner input = new Scanner(System.in);
             System.out.println("Seja bem-vindo ao sistema de cadastro de usuários!");
             System.out.print("Digite seu nome: ");
             String nome = input.nextLine();
-            while (nome.trim().isEmpty()) // verifica se o nome está vazio
-            {
+            while (nome.trim().isEmpty()) {
                 System.out.println("Nome inválido. Por favor, insira um nome válido:");
                 nome = input.nextLine();
             }
+
             // cadastro do email
             System.out.println("Olá, " + nome + "! Vamos prosseguir com o cadastro.");
             System.out.println("Me informe seu email:");
@@ -25,6 +27,7 @@ public class Main {
                 System.out.println("Email inválido. Por favor, insira um email válido:");
                 email = input.nextLine();
             }
+
             // cadastro da senha
             System.out.println("Agora, por favor, crie uma senha:");
             String password = input.nextLine();
@@ -34,7 +37,6 @@ public class Main {
             }
 
             // criação da playlist
-
             System.out.println("Vamos criar sua Playlist.");
             System.out.print("Digite o nome da sua Playlist: ");
             String nomePlaylist = input.nextLine();
@@ -43,7 +45,6 @@ public class Main {
                 System.out.println("Nome da playlist inválido. Por favor, insira um nome válido:");
                 nomePlaylist = input.nextLine();
                 playlist = new Playlist(nomePlaylist);
-
             }
 
             System.out.println("'" + playlist.getnomePlaylist() + "' criada com sucesso!");
@@ -54,11 +55,12 @@ public class Main {
             System.out.println("-------------------------");
             System.out.println("Bem-vindo, " + usuario.getNome() + "!");
             System.out.println("-------------------------");
-            //  LOOP DO MENU COM WHILE
+
+            // LOOP DO MENU
             int opcao = 0;
             while (opcao != 7) {
                 System.out.println("\nMenu do Spotify:");
-                System.out.println("1. Listar musicas disponíveis");
+                System.out.println("1. Listar músicas disponíveis");
                 System.out.println("2. Adicionar música à sua Playlist");
                 System.out.println("3. Remover música da sua Playlist");
                 System.out.println("4. Ver minha Playlist");
@@ -67,59 +69,50 @@ public class Main {
                 System.out.println("7. Sair");
                 System.out.print("Escolha uma opção: ");
 
-                opcao = input.nextInt();
-                {
-                    input.nextLine(); // limpar o buffer
-                    while (opcao < 1 || opcao > 7) { // validação da opção
-                        System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 4:");
-                        opcao = input.nextInt();
-                        input.nextLine();
+                try {
+                    opcao = input.nextInt();
+                    input.nextLine(); // limpar buffer
+
+                    if (opcao < 1 || opcao > 7) {
+                        throw new OpcaoInvalida("Opção inválida! Escolha um número entre 1 e 7.");
                     }
+
                     switch (opcao) {
-                        case 1:  // Listar Todas as músicas
+                        case 1:
                             ListarTodasAsMusicas.listar();
                             break;
-
-                        case 2: // Adicionar Musicas
-                            AdicionarMusicas.adicionar(playlist, new Catalogo()); // chama o método para adicionar músicas à playlist
+                        case 2:
+                            AdicionarMusicas.adicionar(playlist, new Catalogo());
                             break;
-
-                        case 3: // Remover Musicas
-                            RemoverMusica.remover(playlist); // chama o método para remover músicas da playlist
+                        case 3:
+                            RemoverMusica.remover(playlist);
                             break;
-
-                        case 4: // Ver Minha Nome da playlist
-                            VerMinhaPlaylist.verMinhaPlaylist(playlist); // chama o método para ver a playlist
+                        case 4:
+                            VerMinhaPlaylist.verMinhaPlaylist(playlist);
                             break;
-
-                        case 5: // Tempo Total da Nome Da Playlist
-                            TempoTotalDaPlaylist.tempoTotalDaPlaylist(playlist); // chama o método para ver o tempo total da playlist
+                        case 5:
+                            TempoTotalDaPlaylist.tempoTotalDaPlaylist(playlist);
                             break;
-
-                        case 6: // Exibir Dados do Usuário
-                            ExibirDados.mostrar(usuario, playlist);  // chama o método para exibir os dados do usuário
+                        case 6:
+                            ExibirDados.mostrar(usuario, playlist);
                             break;
-
-                        case 7: // Saindo do sistema
+                        case 7:
                             SaindoDoSistema.saindo();
                             break;
-
-                        default: // caso a opção seja inválida
-                            System.out.println("Opção inválida. Por favor, tente novamente.");
                     }
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida! Digite apenas números.");
+                    input.nextLine(); // limpar buffer
+                } catch (OpcaoInvalida e) {
+                    System.out.println(e.getMessage());
                 }
-
-
             }
-            throw new OpcaoInvalida("ERRO: DIGITE APENAS NUMERO INTEIRO !! ");
-        }catch (OpcaoInvalida e){
-            System.out.println(e.getMessage());
-        throw new IllegalArgumentException("ERRO: DIGITE UMA OPÇÃO VÁLIDA!!");
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
 
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        } finally {
+            input.close();
         }
-
-
     }
 }
