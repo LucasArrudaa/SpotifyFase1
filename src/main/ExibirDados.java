@@ -10,7 +10,7 @@ class ExibirDados {
             System.out.println("Sua Senha: " + usuario.getPassword());
             System.out.println("Sua Playlist : " + playlist.getnomePlaylist());
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao adicionar músicas: " + e.getMessage());
+            System.out.println("ERRO " + e.getMessage());
         }
     }
 }

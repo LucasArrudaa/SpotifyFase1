@@ -2,6 +2,7 @@ package main;
 import entities.Genero;
 import entities.Midias;
 import entities.Playlist;
+import exceptions.PlaylistVazia;
 
 public class VerMinhaPlaylist {
     static Genero genero;
@@ -12,7 +13,7 @@ public class VerMinhaPlaylist {
             System.out.println("Sua Playlist '" + playlist.getnomePlaylist() + "' contém as seguintes músicas:");
 
             if (playlist.getMusicas().isEmpty()) {
-                System.out.println("Sua playlist está vazia.");
+                throw new PlaylistVazia("Sua playlist está vazia !!!");
             } else {
                 for (Midias musica : playlist.getMusicas()) {
                     System.out.println(" - " + musica.getNomeMusica() + " (" + musica.getAutor() + ")");
@@ -20,7 +21,7 @@ public class VerMinhaPlaylist {
             }
 
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao exibir a playlist: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }

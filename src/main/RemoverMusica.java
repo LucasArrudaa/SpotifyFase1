@@ -1,5 +1,7 @@
 package main;
 import  entities.*; // importando todas as classes do pacote entities
+import exceptions.PlaylistVazia;
+
 import java.util.Scanner;
 
 class RemoverMusica {
@@ -17,8 +19,7 @@ class RemoverMusica {
             Scanner input = new Scanner(System.in);
             int posicao = Integer.parseInt(input.nextLine()) - 1; // Ajuste para índice baseado em zero
             if (posicao < 0 || posicao >= playlist.getMusicas().size()) {
-                System.out.println("Posição inválida. Nenhuma música foi removida.");
-                return;
+                throw new PlaylistVazia("Sua opção está inválida  !!!");
             }
             Midias musicaRemovida = playlist.getMusicas().get(posicao);
             playlist.removerMusica(posicao);
@@ -26,7 +27,7 @@ class RemoverMusica {
 
 
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao adicionar músicas: " + e.getMessage());
+            System.out.println( e.getMessage());
         }
 
     }
