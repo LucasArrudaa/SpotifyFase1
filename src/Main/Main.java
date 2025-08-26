@@ -99,7 +99,7 @@ public class Main {
                         break;
 
                     case 7: // Saindo do sistema
-                        SaindoDoSistema.saindo();
+                        SaindoDoSistema.saindo();g
                         break;
 
                     default: // caso a opção seja inválida
