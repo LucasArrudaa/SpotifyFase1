@@ -1,5 +1,6 @@
 package main;
 import entities.*; // importando todas as classes do pacote entities
+
 import java.util.Scanner;
 
 public class Main {
@@ -31,20 +32,20 @@ public class Main {
                 password = input.nextLine();
             }
 
-            // criação da nomeDaPlaylist
+            // criação da playlist
 
-            System.out.println("Vamos criar sua nomeDaPlaylist.");
-            System.out.print("Digite o nome da sua nomeDaPlaylist: ");
+            System.out.println("Vamos criar sua Playlist.");
+            System.out.print("Digite o nome da sua Playlist: ");
             String nomePlaylist = input.nextLine();
-            NomeDaPlaylist nomeDaPlaylist = new NomeDaPlaylist(nomePlaylist);
-            while (nomeDaPlaylist.getnomePlaylist().trim().isEmpty()) {
-                System.out.println("Nome da nomeDaPlaylist inválido. Por favor, insira um nome válido:");
+            Playlist playlist = new Playlist(nomePlaylist);
+            while (playlist.getnomePlaylist().trim().isEmpty()) {
+                System.out.println("Nome da playlist inválido. Por favor, insira um nome válido:");
                 nomePlaylist = input.nextLine();
-                nomeDaPlaylist = new NomeDaPlaylist(nomePlaylist);
+                playlist = new Playlist(nomePlaylist);
 
             }
 
-            System.out.println("'" + nomeDaPlaylist.getnomePlaylist() + "' criada com sucesso!");
+            System.out.println("'" + playlist.getnomePlaylist() + "' criada com sucesso!");
 
             // feito o cadastro e criado o objeto usuario
             Usuario usuario = new Usuario(nome, email, password,nomePlaylist);
@@ -55,9 +56,9 @@ public class Main {
             //  LOOP DO MENU COM WHILE
             int opcao = 0;
 
-            while (opcao != 6) {
+            while (opcao != 7) {
                 System.out.println("\nMenu do Spotify:");
-                System.out.println("1. Ver todas as músicas disponíveis na plataforma");
+                System.out.println("1. Listar musicas disponíveis");
                 System.out.println("2. Adicionar música à sua Playlist");
                 System.out.println("3. Remover música da sua Playlist");
                 System.out.println("4. Ver minha Playlist");
@@ -80,22 +81,23 @@ public class Main {
                         break;
 
                     case 2: // Adicionar Musicas
-                        AdicionarMusicas.adicionar(nomeDaPlaylist, new Catalogo()); // chama o método para adicionar músicas à nomeDaPlaylist
+                        AdicionarMusicas.adicionar(playlist, new Catalogo()); // chama o método para adicionar músicas à playlist
                         break;
 
                     case 3: // Remover Musicas
-                        RemoverMusica.remover(nomeDaPlaylist); // chama o método para remover músicas da nomeDaPlaylist
+                        RemoverMusica.remover(playlist); // chama o método para remover músicas da playlist
                         break;
 
                     case 4: // Ver Minha Nome da playlist
-                        VerMinhaPlaylist.verMinhaPlaylist(nomeDaPlaylist); // chama o método para ver a nomeDaPlaylist
+                        VerMinhaPlaylist.verMinhaPlaylist(playlist); // chama o método para ver a playlist
                         break;
 
                     case 5: // Tempo Total da Nome Da Playlist
-                        TempoTotalDaPlaylist.tempoTotalDaPlaylist(nomeDaPlaylist); // chama o método para ver o tempo total da nomeDaPlaylist
+                        TempoTotalDaPlaylist.tempoTotalDaPlaylist(playlist); // chama o método para ver o tempo total da playlist
+                        break;
 
                     case 6: // Exibir Dados do Usuário
-                        ExibirDados.mostrar(usuario, nomeDaPlaylist);  // chama o método para exibir os dados do usuário
+                        ExibirDados.mostrar(usuario, playlist);  // chama o método para exibir os dados do usuário
                         break;
 
                     case 7: // Saindo do sistema

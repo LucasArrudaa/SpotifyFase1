@@ -3,11 +3,11 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NomeDaPlaylist {
+public class Playlist {
     private String nomePlaylist;
     private List<Midias> musicas;
 
-    public NomeDaPlaylist(String nomePlaylist) {
+    public Playlist(String nomePlaylist) {
         this.nomePlaylist = nomePlaylist;
         this.musicas = new ArrayList<>();
     }
@@ -33,7 +33,7 @@ public class NomeDaPlaylist {
     }
 
     public void exibirPlaylist() {
-        System.out.println(" NomeDaPlaylist de " + nomePlaylist + ":");
+        System.out.println(" Playlist de " + nomePlaylist + ":");
         int i = 1; // contador para numerar
         for (Midias musica : musicas) {
             System.out.println(i + ". " + musica.getNomeMusica() + " (" + musica.getAutor() + ")");

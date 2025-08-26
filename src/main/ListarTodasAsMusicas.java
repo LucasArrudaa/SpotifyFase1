@@ -6,7 +6,8 @@ class ListarTodasAsMusicas {
     public static void listar() {
         try {
             // PERGUNTAR SE VAI QUERER VER POR GENERO OU VER TODAS AS MUSICAS
-            System.out.println("Digite 1 para ver todas as músicas ou 2 para ver por gênero:");
+            System.out.println("Digite 1 para ver todas as músicas");
+            System.out.println("Digite 2 para ver por gênero");
             Scanner input = new Scanner(System.in);
             int escolha = Integer.parseInt(input.nextLine());
 
@@ -21,13 +22,21 @@ class ListarTodasAsMusicas {
                 System.out.println(" Todas as Músicas Disponíveis na Plataforma:\n");
 
                 catalogo.getRock().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getPop().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getMpb().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getJazz().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getClassica().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getHipHop().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getEletronica().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getSertanejo().exibirPlaylist();
+                System.out.println("-------------------------");
                 catalogo.getForro().exibirPlaylist();
 
             } else { // escolha == 2 por gênero
@@ -45,7 +54,7 @@ class ListarTodasAsMusicas {
                 int generoEscolhido = Integer.parseInt(input.nextLine());
 
                 switch (generoEscolhido) {
-                    case 1 -> catalogo.getRock().exibirPlaylist();
+                    case 1 -> catalogo.getRock().exibirPlaylist(); //
                     case 2 -> catalogo.getPop().exibirPlaylist();
                     case 3 -> catalogo.getMpb().exibirPlaylist();
                     case 4 -> catalogo.getJazz().exibirPlaylist();

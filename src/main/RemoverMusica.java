@@ -3,27 +3,26 @@ import  entities.*; // importando todas as classes do pacote entities
 import java.util.Scanner;
 
 class RemoverMusica {
-    public static void remover(NomeDaPlaylist nomeDaPlaylist) {
+    public static void remover(Playlist playlist) {
         try {
-            System.out.println("Removendo músicas da nomeDaPlaylist: " + nomeDaPlaylist.getnomePlaylist());
-            if (nomeDaPlaylist.getnomePlaylist() == null || nomeDaPlaylist.getnomePlaylist().trim().isEmpty()) {
-                System.out.println("Você não criou uma nomeDaPlaylist ainda. Por favor, crie uma nomeDaPlaylist antes de remover músicas.");
+            if (playlist.getnomePlaylist() == null || playlist.getnomePlaylist().trim().isEmpty()) {
+                System.out.println("Você não criou uma playlist ainda. Por favor, crie uma playlist antes de remover músicas.");
             }
-            if (nomeDaPlaylist.getMusicas().isEmpty()) {
-                System.out.println("Sua nomeDaPlaylist está vazia. Não há músicas para remover.");
+            if (playlist.getMusicas().isEmpty()) {
+                System.out.println("Sua playlist está vazia. Não há músicas para remover.");
             }
-            if ((nomeDaPlaylist.getnomePlaylist() != null && !nomeDaPlaylist.getnomePlaylist().trim().isEmpty()) && !nomeDaPlaylist.getMusicas().isEmpty())
-                nomeDaPlaylist.exibirPlaylist();
-            System.out.println("Digite a posição da música que deseja remover da sua nomeDaPlaylist:");
+            if ((playlist.getnomePlaylist() != null && !playlist.getnomePlaylist().trim().isEmpty()) && !playlist.getMusicas().isEmpty())
+                playlist.exibirPlaylist();
+            System.out.println("Digite a posição da música que deseja remover da sua playlist:");
             Scanner input = new Scanner(System.in);
             int posicao = Integer.parseInt(input.nextLine()) - 1; // Ajuste para índice baseado em zero
-            if (posicao < 0 || posicao >= nomeDaPlaylist.getMusicas().size()) {
+            if (posicao < 0 || posicao >= playlist.getMusicas().size()) {
                 System.out.println("Posição inválida. Nenhuma música foi removida.");
                 return;
             }
-            Midias musicaRemovida = nomeDaPlaylist.getMusicas().get(posicao);
-            nomeDaPlaylist.removerMusica(posicao);
-            System.out.println("Música '" + musicaRemovida.getNomeMusica() + "' removida da nomeDaPlaylist '" + nomeDaPlaylist.getnomePlaylist() + "'.");
+            Midias musicaRemovida = playlist.getMusicas().get(posicao);
+            playlist.removerMusica(posicao);
+            System.out.println("Música '" + musicaRemovida.getNomeMusica() + "' removida da playlist '" + playlist.getnomePlaylist() + "'.");
 
 
         } catch (Exception e) {

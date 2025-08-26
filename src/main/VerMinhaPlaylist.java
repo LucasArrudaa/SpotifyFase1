@@ -1,26 +1,26 @@
 package main;
 import entities.Genero;
 import entities.Midias;
-import entities.NomeDaPlaylist;
+import entities.Playlist;
 
 public class VerMinhaPlaylist {
     static Genero genero;
-    static NomeDaPlaylist nomeDaPlaylist;
-    public static void verMinhaPlaylist(NomeDaPlaylist getNomeDaPlaylist) {
+    static Playlist playlist;
+    public static void verMinhaPlaylist(Playlist getPlaylist) {
         try{
-            NomeDaPlaylist nomeDaPlaylist = getNomeDaPlaylist;
-            System.out.println("Sua NomeDaPlaylist '" + nomeDaPlaylist.getnomePlaylist() + "' contém as seguintes músicas:");
+            Playlist playlist = getPlaylist;
+            System.out.println("Sua Playlist '" + playlist.getnomePlaylist() + "' contém as seguintes músicas:");
 
-            if (nomeDaPlaylist.getMusicas().isEmpty()) {
-                System.out.println("Sua nomeDaPlaylist está vazia.");
+            if (playlist.getMusicas().isEmpty()) {
+                System.out.println("Sua playlist está vazia.");
             } else {
-                for (Midias musica : nomeDaPlaylist.getMusicas()) {
+                for (Midias musica : playlist.getMusicas()) {
                     System.out.println(" - " + musica.getNomeMusica() + " (" + musica.getAutor() + ")");
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao exibir a nomeDaPlaylist: " + e.getMessage());
+            System.out.println("Ocorreu um erro ao exibir a playlist: " + e.getMessage());
         }
     }
 }

@@ -2,29 +2,29 @@ package entities;
 
 public class Catalogo {
 
-    private NomeDaPlaylist sertanejo;
-    private NomeDaPlaylist rock;
-    private NomeDaPlaylist forro;
-    private NomeDaPlaylist jazz;
-    private NomeDaPlaylist hiphop;
-    private NomeDaPlaylist pop;
-    private NomeDaPlaylist classica;
-    private NomeDaPlaylist eletronica;
-    private NomeDaPlaylist mpb;
+    private Playlist sertanejo;
+    private Playlist rock;
+    private Playlist forro;
+    private Playlist jazz;
+    private Playlist hiphop;
+    private Playlist pop;
+    private Playlist classica;
+    private Playlist eletronica;
+    private Playlist mpb;
 
     public Catalogo() {
 
         // Criando playlists
 
-        sertanejo = new NomeDaPlaylist("Sertanejo");
-        rock = new NomeDaPlaylist("Rock");
-        forro = new NomeDaPlaylist("Forró");
-        jazz = new NomeDaPlaylist("Jazz");
-        hiphop = new NomeDaPlaylist("HipHop");
-        pop = new NomeDaPlaylist("Pop");
-        classica = new NomeDaPlaylist("Clássica");
-        eletronica = new NomeDaPlaylist("Eletrônica");
-        mpb = new NomeDaPlaylist("MPB");
+        sertanejo = new Playlist("Sertanejo");
+        rock = new Playlist("Rock");
+        forro = new Playlist("Forró");
+        jazz = new Playlist("Jazz");
+        hiphop = new Playlist("HipHop");
+        pop = new Playlist("Pop");
+        classica = new Playlist("Clássica");
+        eletronica = new Playlist("Eletrônica");
+        mpb = new Playlist("MPB");
 
         // Preenchendo playlists com músicas
         sertanejo.adicionarMusica(new Midias("Sertanejo", "Marcos & Belutti", 3.28F, "Domingo de Manhã"));
@@ -57,15 +57,15 @@ public class Catalogo {
 
 
     // Métodos para acessar as playlists
-    public NomeDaPlaylist getSertanejo() { return sertanejo; }
-    public NomeDaPlaylist getRock() { return rock; }
-    public NomeDaPlaylist getForro() { return forro; }
-    public NomeDaPlaylist getJazz() { return jazz; }
-    public NomeDaPlaylist getHipHop() { return hiphop; }
-    public NomeDaPlaylist getPop() { return pop; }
-    public NomeDaPlaylist getClassica() { return classica; }
-    public NomeDaPlaylist getEletronica() { return eletronica; }
-    public NomeDaPlaylist getMpb() { return mpb; }
+    public Playlist getSertanejo() { return sertanejo; }
+    public Playlist getRock() { return rock; }
+    public Playlist getForro() { return forro; }
+    public Playlist getJazz() { return jazz; }
+    public Playlist getHipHop() { return hiphop; }
+    public Playlist getPop() { return pop; }
+    public Playlist getClassica() { return classica; }
+    public Playlist getEletronica() { return eletronica; }
+    public Playlist getMpb() { return mpb; }
 
     // listatr musicas
 

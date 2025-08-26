@@ -3,15 +3,18 @@ import  entities.*; // importando todas as classes do pacote entities
 
 
 class TempoTotalDaPlaylist {
-    public static void tempoTotalDaPlaylist(NomeDaPlaylist nomeDaPlaylist) {
+    public static void tempoTotalDaPlaylist(Playlist playlist) {
         try {
-            float total = 0;
-            for (Midias musica : nomeDaPlaylist.getMusicas()) {
-                total += musica.getTempoMusica();
+            float tempoTotal = 0.0F; // variável para acumular o tempo total
+            for (Midias musica : playlist.getMusicas()) {
+                tempoTotal += musica.getTempoMusica(); // somando o tempo de cada música
             }
-            System.out.printf("Tempo total da nomeDaPlaylist '%s': %.2f minutos%n", nomeDaPlaylist.getnomePlaylist(), total);
-        }catch (Exception e) {
-            System.out.println("Ocorreu um erro ao calcular o tempo total da nomeDaPlaylist: " + e.getMessage());
+            int minutos = (int) tempoTotal;
+            int segundos = (int) ((tempoTotal - minutos) * 60);
+            System.out.println("Tempo total da playlist '" + playlist.getnomePlaylist() + "' é de :  " + minutos + " minutos e " + segundos + " segundos.");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro ao calcular o tempo total da playlist: " + e.getMessage());
         }
     }
 }
+

@@ -3,11 +3,11 @@ import entities.*;
 import java.util.Scanner;
 
 class AdicionarMusicas {
-    public static void adicionar(NomeDaPlaylist nomeDaPlaylist, Catalogo catalogo) {
+    public static void adicionar(Playlist playlist, Catalogo catalogo) {
         try {
-            System.out.println("Adicionando músicas à nomeDaPlaylist: " + nomeDaPlaylist.getnomePlaylist());
-            if (nomeDaPlaylist.getnomePlaylist() == null || nomeDaPlaylist.getnomePlaylist().trim().isEmpty()) {
-                System.out.println("Você não criou uma nomeDaPlaylist ainda. Por favor, crie uma nomeDaPlaylist antes de adicionar músicas.");
+            System.out.println("Adicionando músicas à playlist: " + playlist.getnomePlaylist());
+            if (playlist.getnomePlaylist() == null || playlist.getnomePlaylist().trim().isEmpty()) {
+                System.out.println("Você não criou uma playlist ainda. Por favor, crie uma playlist antes de adicionar músicas.");
                 return;
             }
             System.out.println("Escolha um gênero para adicionar músicas:");
@@ -37,7 +37,7 @@ class AdicionarMusicas {
 
 
             }
-            System.out.println("Digite a posição da música que deseja adicionar à sua nomeDaPlaylist:");
+            System.out.println("Digite a posição da música que deseja adicionar à sua playlist:");
             int posicao = Integer.parseInt(input.nextLine()) - 1; // Ajuste para índice baseado em zero
             Midias musicaEscolhida = null;
             switch (escolha) {
@@ -52,8 +52,8 @@ class AdicionarMusicas {
                 case 9 -> musicaEscolhida = catalogo.getForro().getMusicas().get(posicao);
             }
             if (musicaEscolhida != null) {
-                nomeDaPlaylist.adicionarMusica(musicaEscolhida);
-                System.out.println("Música '" + musicaEscolhida.getNomeMusica() + "' adicionada à nomeDaPlaylist '" + nomeDaPlaylist.getnomePlaylist() + "'.");
+                playlist.adicionarMusica(musicaEscolhida);
+                System.out.println("Música '" + musicaEscolhida.getNomeMusica() + "' adicionada à playlist '" + playlist.getnomePlaylist() + "'.");
             } else {
                 System.out.println("Posição inválida. Nenhuma música foi adicionada.");
             }
