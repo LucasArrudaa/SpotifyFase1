@@ -12,6 +12,7 @@ class RemoverMusica {
             }
             if (playlist.getMusicas().isEmpty()) {
                 System.out.println("Sua playlist está vazia. Não há músicas para remover.");
+                return;
             }
             if ((playlist.getnomePlaylist() != null && !playlist.getnomePlaylist().trim().isEmpty()) && !playlist.getMusicas().isEmpty())
                 playlist.exibirPlaylist();
